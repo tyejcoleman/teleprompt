@@ -3,7 +3,7 @@
 Use the following prompt with an agent that can access your Mac's terminal and project files. If browser control is available, it can also help with the UI. You will still need to grant microphone access and speak for the real-device test.
 
 ```text
-Set up and tune the attached voice-follow-teleprompter source ZIP (or an existing checkout) on my Mac. The intended GitHub destination is https://github.com/tyejcoleman/voice-follow-teleprompter, but use the attached source if that repository has not been created yet.
+Set up and tune this open-source teleprompter on my Mac: https://github.com/tyejcoleman/teleprompt. Use an existing local checkout if I already have one, or the attached source ZIP if provided.
 
 I will tune it on my Mac first, then share the tuned project with another person and their agent. The presenter records separately in QuickTime, OBS, or another app on the same Mac. Do not add a recorder, hosted deployment, ElevenLabs, or another paid API dependency.
 

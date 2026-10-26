@@ -1,37 +1,23 @@
-# Publish the source to GitHub
+# Share tuned changes on GitHub
 
-The initial development connection could not create a new GitHub repository: GitHub returned `CreateRepository` permission denied. The downloadable source bundle is complete, but a repository URL is not proof that a repository exists.
+Project: https://github.com/tyejcoleman/teleprompt
 
-You can tune locally from the ZIP before publishing. Your Mac agent can use your locally authenticated GitHub account, or you can create an empty public repository at https://github.com/new and give its URL to the agent. Preserve the MIT license and upstream attribution.
-
-## From an extracted source ZIP
-
-After tuning, review the files to make sure the project does not contain personal scripts, audio, video, or credentials. The ZIP does not include the original `.git` directory.
+Use the existing checkout and `origin` remote. After tuning, review the files to make sure the project does not contain personal scripts, audio, video, or credentials. Preserve the MIT license and upstream attribution.
 
 ```bash
-git init -b main
-git add .
 git status --short
-# Review the staged files before committing.
-git commit -m "Add voice-follow teleprompter"
+# Stage only the source/configuration changes you intend to share.
+git add src/config.ts src/theme.css
+# Adapt that file list to your actual changes.
+git diff --cached
+npm test
+npm run build
+git commit -m "Tune teleprompter reading experience"
+git push origin main
 ```
 
-If Git requires your author identity, configure the identity you want on the repository. Do not copy an agent's identity without reviewing it.
+Use the user's authorized branch/PR workflow if they prefer one. Do not force-push over existing history. If authentication is needed, use the Mac's normal GitHub credentials or GitHub CLI login; do not put tokens in source files or remote URLs.
 
-With GitHub CLI installed and authenticated on the Mac:
+## Starting from an extracted ZIP
 
-```bash
-gh auth status
-gh repo create voice-follow-teleprompter --public --source . --remote origin --push
-```
-
-If an empty GitHub repository already exists instead:
-
-```bash
-git remote add origin https://github.com/YOUR-USERNAME/voice-follow-teleprompter.git
-git push -u origin main
-```
-
-Use your actual repository URL. Do not force-push over an existing project's history. If a remote or existing repository is already configured, inspect and reuse it safely.
-
-The README/setup prompt currently uses `tyejcoleman/voice-follow-teleprompter` as the intended destination; update those links if you choose a different account or name. After publishing, verify the repository URL and the Check workflow, then share `START_HERE.md` or `docs/AGENT_HANDOFF.md` with the next agent.
+The source ZIP does not include `.git`. Prefer cloning the existing GitHub repository and copying the intended tuned source changes into that checkout. Review the diff before committing; do not overwrite unrelated changes or personal script files. The setup prompt is `START_HERE.md`; the next person's agent can start with `docs/AGENT_HANDOFF.md`.

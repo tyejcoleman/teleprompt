@@ -1,6 +1,6 @@
 VOICE FOLLOW — MAC SETUP AND FEEDBACK HANDOFF
 
-Project: https://github.com/tyejcoleman/voice-follow-teleprompter
+Project: https://github.com/tyejcoleman/teleprompt
 Start prompt: START_HERE.md
 Agent instructions: AGENTS.md and docs/AGENT_HANDOFF.md
 Tuning: docs/TUNING.md
