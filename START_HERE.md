@@ -3,12 +3,11 @@
 Use the following prompt with an agent that can access your Mac's terminal and project files. If browser control is available, it can also help with the UI. You will still need to grant microphone access and speak for the real-device test.
 
 ```text
-Set up and tune this open-source teleprompter on my Mac:
-https://github.com/tyejcoleman/voice-follow-teleprompter
+Set up and tune the attached voice-follow-teleprompter source ZIP (or an existing checkout) on my Mac. The intended GitHub destination is https://github.com/tyejcoleman/voice-follow-teleprompter, but use the attached source if that repository has not been created yet.
 
 I will tune it on my Mac first, then share the tuned project with another person and their agent. The presenter records separately in QuickTime, OBS, or another app on the same Mac. Do not add a recorder, hosted deployment, ElevenLabs, or another paid API dependency.
 
-Clone it once into a stable local folder, or reuse my existing checkout. Read AGENTS.md, README.md, docs/TUNING.md, and docs/MAC_ACCEPTANCE.md. Check Google Chrome and Node.js >=22.12. Run npm ci, npm test, and npm run build. Start the local app with npm run dev and open http://localhost:5173 in desktop Chrome. Keep the terminal and main tab open. The Mac launcher is Start Teleprompter.command.
+Extract the supplied ZIP or clone the existing repository once into a stable local folder. Reuse that checkout for every round of feedback. Read AGENTS.md, README.md, docs/TUNING.md, and docs/MAC_ACCEPTANCE.md. Check Google Chrome and Node.js >=22.12. Run npm ci, npm test, and npm run build. Start the local app with npm run dev and open http://localhost:5173 in desktop Chrome. Keep the terminal and main tab open. The Mac launcher is Start Teleprompter.command.
 
 Help me load my script without rewriting it, set the speech language, and test the microphone. Make the reader comfortable for my screen/camera position, using Focus view or Float reader. I will grant microphone permission and speak for the test.
 
@@ -16,5 +15,5 @@ When I give feedback, fix this same running checkout in place. Preserve my scrip
 
 For tracking bugs, compare the actual recognized text with the intended script position, add an authorized or synthetic regression fixture, then fix and test it. Run relevant checks after changes. Walk me through the Mac acceptance checklist, including a short recording in my separate recorder. Be explicit about what is simulated versus tested on my real Mac; do not call the matcher benchmark end-to-end latency.
 
-When I am happy, give me the local folder, launcher, changed settings, and a short handoff for the next person's agent. Keep scripts and recordings out of GitHub unless I explicitly authorize sharing them. Leave repository pushes or a release for when I ask.
+When I am happy, give me the local folder, launcher, changed settings, and a short handoff for the next person's agent. Keep scripts and recordings out of GitHub unless I explicitly authorize sharing them. Once tuning is finished, help me publish the source to GitHub using docs/PUBLISH.md and my locally authenticated GitHub account. Keep personal scripts, recordings, and credentials out of the repository. Do not force-push over an existing project.
 ```

@@ -6,6 +6,8 @@ Paste a script, start listening, and speak naturally. Your current word is highl
 
 No account, hosted service, ElevenLabs key, or LLM key is required by this app. Browser speech recognition may use an online browser-provider service and send microphone audio to it. This is not an offline transcription promise.
 
+For a source ZIP, extract it into a stable folder and run the same setup commands from that folder. The intended GitHub repository may still need to be created; see [publishing instructions](docs/PUBLISH.md).
+
 ## Start on a Mac
 
 Requirements: **Google Chrome** and **Node.js 22.12 or newer**. Node 22 LTS is a suitable choice.
