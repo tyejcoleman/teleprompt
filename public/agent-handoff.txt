@@ -1,0 +1,33 @@
+VOICE FOLLOW — MAC SETUP AND FEEDBACK HANDOFF
+
+Project: https://github.com/tyejcoleman/voice-follow-teleprompter
+Start prompt: START_HERE.md
+Agent instructions: AGENTS.md and docs/AGENT_HANDOFF.md
+Tuning: docs/TUNING.md
+Real-device check: docs/MAC_ACCEPTANCE.md
+
+Use Node >=22.12, npm ci, npm test, npm run build, then npm run dev.
+Open http://localhost:5173 in desktop Google Chrome.
+Mac launcher: bash "Start Teleprompter.command"
+
+The owner will tune this on their Mac first. Use the same checkout and development
+server for feedback. Preserve the approved script and browser-local storage.
+The presenter records separately. No required API key or hosted deployment.
+
+Load a UTF-8 .txt file, or use Edit script, paste the approved text, then Save script.
+Put unspoken cues in [square brackets]. Choose the spoken language.
+The user grants microphone permission and reads aloud for the real-device test.
+Start listening, then Float reader to position it near the camera. Keep the original
+tab open. Use Focus view if floating support is unavailable.
+
+Tune src/config.ts for reading/tracking defaults, src/theme.css for visual tokens,
+and src/index.css for layout. Changes reload in place. CSS changes also sync to an
+open floating reader. A page refresh or code remount may require restarting listening.
+
+Voice tracking aligns browser interim transcripts to nearby script words. It does
+not generate new advice or promise arbitrary semantic paraphrase recognition.
+Browser recognition may use an online service. Simulated tests cannot establish
+real Mac microphone latency, Chrome floating behavior, or recorder compatibility.
+
+Do not commit scripts, recordings, or credentials without explicit authorization.
+Original upstream: https://github.com/jlecomte/voice-activated-teleprompter (MIT).

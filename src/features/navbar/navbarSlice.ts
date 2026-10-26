@@ -1,0 +1,153 @@
+import { prompterConfig } from "../../config"
+import type { PayloadAction } from "@reduxjs/toolkit"
+import { createAppSlice } from "../../app/createAppSlice"
+
+export interface NavBarSliceState {
+  speechMessage: string
+  status: "editing" | "started" | "stopped"
+  horizontallyFlipped: boolean
+  verticallyFlipped: boolean
+  fontSize: number
+  margin: number
+  opacity: number
+  scrollOffset: number
+  language: string
+}
+
+export const SUPPORTED_LOCALES = {
+  "nl-NL": "🇳🇱 Dutch (Netherlands)",
+  "en-US": "🇺🇸 English (USA)",
+  "fr-FR": "🇫🇷 French (France)",
+  "de-DE": "🇩🇪 German (Germany)",
+  "it-IT": "🇮🇹 Italian (Italy)",
+  "pt-BR": "🇧🇷 Portuguese (Brazil)",
+  "es-ES": "🇪🇸 Spanish (Spain)",
+  "sv-SE": "🇸🇪 Swedish (Sweden)",
+}
+
+// Detect browser language and default to pt-BR if Portuguese, otherwise en-US
+const detectLanguage = (): string => {
+  let savedLanguage: string | null = null
+  try { savedLanguage = localStorage.getItem("teleprompter-language") } catch { /* Storage may be disabled. */ }
+  if (savedLanguage && Object.prototype.hasOwnProperty.call(SUPPORTED_LOCALES, savedLanguage)) {
+    return savedLanguage
+  }
+
+  if (SUPPORTED_LOCALES.hasOwnProperty(navigator.language)) {
+    return navigator.language
+  }
+
+  // TODO: Try to find a "best match", for example if `navigator.language` is `fr-CA` or just `fr`...
+
+  return "en-US"
+}
+
+const initialState: NavBarSliceState = {
+  speechMessage: "Ready. Import your script, then start listening.",
+  status: "stopped",
+  horizontallyFlipped: false,
+  verticallyFlipped: false,
+  fontSize: prompterConfig.reading.fontSize,
+  margin: prompterConfig.reading.margin,
+  opacity: 100,
+  scrollOffset: prompterConfig.reading.scrollOffset,
+  language: detectLanguage(),
+}
+
+export const navbarSlice = createAppSlice({
+  name: "navbar",
+
+  // `createSlice` will infer the state type from the `initialState` argument
+  initialState,
+
+  // The `reducers` field lets us define reducers and generate associated actions
+  reducers: create => ({
+    toggleEdit: create.reducer(state => {
+      if (state.status === "editing") {
+        state.status = "stopped"
+      } else {
+        state.status = "editing"
+      }
+    }),
+
+    setSpeechMessage: create.reducer((state, action: PayloadAction<string>) => {
+      state.speechMessage = action.payload
+    }),
+
+    start: create.reducer(state => {
+      state.status = "started"
+    }),
+
+    stop: create.reducer(state => {
+      state.status = "stopped"
+    }),
+
+    flipHorizontally: create.reducer(state => {
+      state.horizontallyFlipped = !state.horizontallyFlipped
+    }),
+
+    flipVertically: create.reducer(state => {
+      state.verticallyFlipped = !state.verticallyFlipped
+    }),
+
+    setFontSize: create.reducer((state, action: PayloadAction<number>) => {
+      state.fontSize = action.payload
+    }),
+
+    setMargin: create.reducer((state, action: PayloadAction<number>) => {
+      state.margin = action.payload
+    }),
+
+    setOpacity: create.reducer((state, action: PayloadAction<number>) => {
+      state.opacity = action.payload
+    }),
+
+    setScrollOffset: create.reducer((state, action: PayloadAction<number>) => {
+      state.scrollOffset = action.payload
+    }),
+
+    setLanguage: create.reducer((state, action: PayloadAction<string>) => {
+      state.language = action.payload
+      try { localStorage.setItem("teleprompter-language", action.payload) } catch { /* Storage may be disabled. */ }
+    }),
+  }),
+
+  selectors: {
+    selectSpeechMessage: state => state.speechMessage,
+    selectStatus: state => state.status,
+    selectFontSize: state => state.fontSize,
+    selectMargin: state => state.margin,
+    selectHorizontallyFlipped: state => state.horizontallyFlipped,
+    selectVerticallyFlipped: state => state.verticallyFlipped,
+    selectOpacity: state => state.opacity,
+    selectScrollOffset: state => state.scrollOffset,
+    selectLanguage: state => state.language,
+  },
+})
+
+// Action creators are generated for each case reducer function.
+export const {
+  toggleEdit,
+  setSpeechMessage,
+  start,
+  stop,
+  flipHorizontally,
+  flipVertically,
+  setFontSize,
+  setMargin,
+  setOpacity,
+  setScrollOffset,
+  setLanguage,
+} = navbarSlice.actions
+
+export const {
+  selectStatus,
+  selectSpeechMessage,
+  selectFontSize,
+  selectMargin,
+  selectHorizontallyFlipped,
+  selectVerticallyFlipped,
+  selectOpacity,
+  selectScrollOffset,
+  selectLanguage,
+} = navbarSlice.selectors

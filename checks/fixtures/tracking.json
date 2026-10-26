@@ -1,0 +1,86 @@
+[
+  {
+    "name": "first word updates immediately",
+    "script": "Hello world. This is a test.",
+    "speech": "hello",
+    "confirmedWords": 0,
+    "expectedReadWords": 1
+  },
+  {
+    "name": "case and punctuation",
+    "script": "Hello, WORLD! This is a test.",
+    "speech": "hello world",
+    "confirmedWords": 0,
+    "expectedReadWords": 2
+  },
+  {
+    "name": "unspoken delivery cues",
+    "script": "[Smile.] Welcome to the show. [Pause.] Today we begin.",
+    "speech": "welcome to the show",
+    "confirmedWords": 0,
+    "expectedReadWords": 4
+  },
+  {
+    "name": "recognition typo",
+    "script": "Welcome to the studio. Today we begin.",
+    "speech": "welcome to the stuidio",
+    "confirmedWords": 0,
+    "expectedReadWords": 4
+  },
+  {
+    "name": "spoken filler",
+    "script": "Welcome to the studio. Today we begin.",
+    "speech": "welcome um to the studio",
+    "confirmedWords": 0,
+    "expectedReadWords": 4
+  },
+  {
+    "name": "off script holds position",
+    "script": "Welcome to the studio. Today we begin.",
+    "speech": "purple elephants juggle umbrellas",
+    "confirmedWords": 0,
+    "expectedReadWords": 0
+  },
+  {
+    "name": "off script after progress",
+    "script": "Welcome to the studio. Today we begin.",
+    "speech": "purple elephants juggle umbrellas",
+    "confirmedWords": 4,
+    "expectedReadWords": 4
+  },
+  {
+    "name": "single common word cannot jump paragraphs",
+    "script": "Welcome to our studio today. Let us introduce the pricing information now.",
+    "speech": "the",
+    "confirmedWords": 0,
+    "expectedReadWords": 0
+  },
+  {
+    "name": "skip a nearby sentence with a distinct phrase",
+    "script": "Welcome to our studio today. Let us introduce the pricing information now.",
+    "speech": "the pricing information",
+    "confirmedWords": 0,
+    "expectedReadWords": 11
+  },
+  {
+    "name": "resume after a committed phrase",
+    "script": "Welcome to the studio. Today we begin.",
+    "speech": "today we begin",
+    "confirmedWords": 4,
+    "expectedReadWords": 7
+  },
+  {
+    "name": "repeated phrase chooses nearest occurrence",
+    "script": "Thank you. Let us begin. Thank you for listening.",
+    "speech": "thank you",
+    "confirmedWords": 0,
+    "expectedReadWords": 2
+  },
+  {
+    "name": "empty audio does not advance",
+    "script": "Hello world.",
+    "speech": "",
+    "confirmedWords": 0,
+    "expectedReadWords": 0
+  }
+]

@@ -1,0 +1,12 @@
+[Look at the camera.]
+Welcome. This is a short test of our voice-following teleprompter.
+
+As I speak, the words should change color and the script should follow my place.
+
+[Pause for two seconds.]
+When I pause, the text should wait. When I continue, it should follow again.
+
+[Next: explain the benefit.]
+The goal is to keep the next point in view, so I can focus on speaking clearly.
+
+If I lose my place, I can click the word where I want to continue.

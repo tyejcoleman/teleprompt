@@ -1,0 +1,9 @@
+Adapted from https://github.com/jlecomte/voice-activated-teleprompter
+Upstream source commit: cd222c8225b9ac34ab4ecd0b14864de623e66dac
+Original author: Julien Lecomte. MIT license retained in LICENSE and public/LICENSE.txt.
+
+This derivative adds a studio reader, current-word highlighting, delivery cues,
+script import/export and persistence, confidence-gated local alignment, explicit
+recognition errors, focus and floating views, live style syncing, agent tuning
+surfaces, a Mac launcher, and regression checks. Browser Web Speech API remains
+the only speech provider; no required paid API or hosted deployment.

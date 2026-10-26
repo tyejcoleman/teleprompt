@@ -1,0 +1,19 @@
+/* Agent tuning surface: color, contrast, typography, spacing. No rebuild or deployment is needed in dev mode. */
+:root {
+  color-scheme: dark;
+  --canvas: #0a1017;
+  --panel: #101923;
+  --reader-background: #0d151e;
+  --button: #17232f;
+  --border: #283641;
+  --ink: #edf3f5;
+  --muted: #91a3b1;
+  --accent: #a4efd5;
+  --warning: #efc48b;
+  --spoken: #607180;
+  --upcoming: #edf3f5;
+  --reader-radius: 14px;
+  --reader-line-height: 1.65;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-reader: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
