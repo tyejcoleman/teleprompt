@@ -3,12 +3,17 @@ export const prompterConfig = {
   reading: {
     fontSize: 46,
     margin: 36,
-    scrollOffset: 100,
+    /** Pixels from the top of the reader to the current line. Small keeps your eyes near the webcam. */
+    scrollOffset: 32,
+    /** Widest text column, centered under the webcam. */
+    columnWidth: 980,
     floatingWidth: 720,
     floatingHeight: 420,
     maxScriptBytes: 500_000,
   },
   tracking: {
+    /** Highlight the word to say next. Recognition reports a word only after it is spoken. */
+    highlightNextWord: true,
     /** A bounded transcript tail keeps matching work small during long phrases. */
     maxTranscriptWords: 40,
     /** Search near the last confirmed position; require several words for jumps. */

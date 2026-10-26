@@ -6,9 +6,11 @@ Agent instructions: AGENTS.md and docs/AGENT_HANDOFF.md
 Tuning: docs/TUNING.md
 Real-device check: docs/MAC_ACCEPTANCE.md
 
-Use Node >=22.12, npm ci, npm test, npm run build, then npm run dev.
-Open http://localhost:5173 in desktop Google Chrome.
-Mac launcher: bash "Start Teleprompter.command"
+Setup is one command (see "Set up for a new user" in AGENTS.md):
+  node setup.mjs --script <script.txt> [--cued <script.cued.txt>]
+It checks Node >=22.12 and Chrome, installs, loads the script, starts the app in
+the background, and opens http://127.0.0.1:5173 in desktop Google Chrome.
+Ask the user where their script is and whether to add delivery cues first.
 
 The owner will tune this on their Mac first. Use the same checkout and development
 server for feedback. Preserve the approved script and browser-local storage.
@@ -16,9 +18,11 @@ The presenter records separately. No required API key or hosted deployment.
 
 Load a UTF-8 .txt file, or use Edit script, paste the approved text, then Save script.
 Put unspoken cues in [square brackets]. Choose the spoken language.
+To add delivery cues for the user, follow docs/CUES.md: insert cues only, never
+change spoken words, and check with: npm run cues -- original.txt cued.txt
 The user grants microphone permission and reads aloud for the real-device test.
 Start listening, then Float reader to position it near the camera. Keep the original
-tab open. Use Focus view if floating support is unavailable.
+tab open. Use Full screen (F) if floating support is unavailable.
 
 Tune src/config.ts for reading/tracking defaults, src/theme.css for visual tokens,
 and src/index.css for layout. Changes reload in place. CSS changes also sync to an

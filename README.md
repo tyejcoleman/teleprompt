@@ -2,7 +2,7 @@
 
 An open-source teleprompter that follows your voice while you **record separately** in QuickTime, OBS, or another app on the same Mac.
 
-Paste a script, start listening, and speak naturally. Your current word is highlighted, completed words dim, speaker cues stand out, and the next lines remain visible. Focus view removes distractions. Desktop Chrome's floating reader stays above other apps where Document Picture-in-Picture is supported.
+Paste a script, start listening, and speak naturally. Your current word is highlighted, completed words dim, speaker cues stand out, and the next lines remain visible. Full screen leaves only the script, with the reading line at the top edge under the webcam. Desktop Chrome's floating reader stays above other apps where Document Picture-in-Picture is supported.
 
 No account, hosted service, ElevenLabs key, or LLM key is required by this app. Browser speech recognition may use an online browser-provider service and send microphone audio to it. This is not an offline transcription promise.
 
@@ -10,31 +10,24 @@ For a source ZIP, extract it into a stable folder and run the same setup command
 
 ## Start on a Mac
 
-Requirements: **Google Chrome** and **Node.js 22.12 or newer**. Node 22 LTS is a suitable choice.
+**With a coding agent (easiest):** paste [the setup prompt](SETUP_PROMPT.txt) into Codex, Claude Code, Cursor, or similar. It asks where your script is and whether to add delivery cues, then sets everything up.
+
+**Yourself:** you need **Google Chrome** and **Node.js 22.12+**. Then:
 
 ```bash
 git clone https://github.com/tyejcoleman/teleprompt.git
 cd teleprompt
-npm ci
-npm run dev
+node setup.mjs --script ~/path/to/your-script.txt
 ```
 
-Open **http://localhost:5173** in Chrome. Keep the terminal and the original browser tab open. `localhost` is an allowed secure context for microphone access.
+`setup.mjs` installs dependencies, loads your script, starts the app in the background, and opens **http://127.0.0.1:5173** in Chrome. Leave out `--script` to start with the sample, `node setup.mjs --stop` stops it. `localhost` is an allowed secure context for microphone access. `bash "Start Teleprompter.command"` still works if you prefer a terminal you keep open.
 
-Alternatively, after downloading or cloning the project, run:
-
-```bash
-bash "Start Teleprompter.command"
-```
-
-The launcher installs locked dependencies when needed, starts the local app, and opens Chrome on macOS. It checks the Node version first. On a fresh Mac, install Node and Chrome before using the launcher. A downloaded `.command` file may need permission to execute; invoking it with `bash` avoids that executable-bit issue.
-
-1. Choose **Edit script**, paste the script, then **Save script**, or choose **Import .txt**.
-2. Put unspoken instructions in brackets, for example `[Pause. Next: explain the price.]`.
+1. Choose **Edit script**, paste the script, then **Save script**, or choose **Menu → Import .txt**.
+2. Put unspoken instructions in brackets, for example `[Pause. Next: explain the price.]`. An agent can add these for you: see [docs/CUES.md](docs/CUES.md).
 3. Choose the language you will speak.
 4. Click **Start listening** and allow the microphone in Chrome. Check macOS **System Settings → Privacy & Security → Microphone** if access is blocked.
 5. Read a short paragraph. The first-word highlight and **Following your voice** state confirm transcript matching.
-6. Choose **Float reader ↗**, position the window near the camera, then use your separate recording app. Keep the main tab open. If floating view is unavailable, use **Focus view** or a second display.
+6. Choose **Float reader ↗**, position the window near the camera, then use your separate recording app. Keep the main tab open. If floating view is unavailable, use **Full screen** or a second display.
 7. Record a short test in the recording app and verify its microphone input and audio. Using the microphone in Chrome does not record your video or select the recorder's audio source.
 
 **Capture behavior:** a full-desktop recording can include the prompter. Use your recorder's camera, application, or window capture settings as appropriate. The app does not hide itself from recordings.
@@ -71,7 +64,8 @@ Audio latency depends on Chrome's recognition service, the network, the micropho
 ## Controls
 
 - **Space:** start/pause listening when a text field or native control is not active.
-- **F:** focus view. **Escape:** stop listening.
+- **F:** full screen. **Escape:** exit full screen, or stop listening.
+- While reading, **Pause** and **Exit full screen** sit at the bottom of the screen.
 - **Left / right:** move five text elements. **Up / down:** move fifteen.
 - **Click any word:** choose where to resume.
 - **Restart:** return to the beginning while paused.

@@ -31,3 +31,10 @@ dist/
 .env
 .env.*
 *.recording.*
+
+# The user's script, dropped in by the setup agent. Never commit it.
+public/local/
+*.cued.txt
+
+# setup.mjs background server state
+.local/

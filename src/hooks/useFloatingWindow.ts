@@ -9,7 +9,7 @@ export function useFloatingWindow() {
   const observerRef = useRef<MutationObserver | null>(null)
   const api = (window as Window & { documentPictureInPicture?: PictureInPictureAPI }).documentPictureInPicture
   const openFloating = useCallback(async () => {
-    if (!api) { setFloatingError("Floating view needs desktop Chrome with Document Picture-in-Picture support. Use Focus view instead."); return }
+    if (!api) { setFloatingError("Floating view needs desktop Chrome with Document Picture-in-Picture support. Use Full screen instead."); return }
     if (windowRef.current && !windowRef.current.closed) { windowRef.current.focus(); return }
     try {
       const pip = await api.requestWindow({ width: prompterConfig.reading.floatingWidth, height: prompterConfig.reading.floatingHeight })
@@ -33,7 +33,7 @@ export function useFloatingWindow() {
       setFloatingError("")
       setFloatingWindow(pip)
     } catch {
-      setFloatingError("Chrome could not open the floating reader. Click Floating view again, or use Focus view.")
+      setFloatingError("Chrome could not open the floating reader. Click Floating view again, or use Full screen.")
     }
   }, [api])
   const closeFloating = useCallback(() => { windowRef.current?.close(); windowRef.current = null; setFloatingWindow(null) }, [])

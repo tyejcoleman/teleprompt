@@ -1,13 +1,5 @@
-Set up and tune this open-source teleprompter on my Mac: https://github.com/tyejcoleman/teleprompt. Use an existing local checkout if I already have one, or the attached source ZIP if provided.
+Set up this teleprompter on my Mac: https://github.com/tyejcoleman/teleprompt
 
-I will tune it on my Mac first, then share the tuned project with another person and their agent. The presenter records separately in QuickTime, OBS, or another app on the same Mac. Do not add a recorder, hosted deployment, ElevenLabs, or another paid API dependency.
+Clone it into ~/teleprompt (or reuse my existing checkout), then follow "Set up for a new user" in its AGENTS.md. Ask me where my script is and whether to add delivery cues, then run node setup.mjs. Never change my spoken words. I'll allow the microphone and test my voice myself.
 
-Extract the supplied ZIP or clone the existing repository once into a stable local folder. Reuse that checkout for every round of feedback. Read AGENTS.md, README.md, docs/TUNING.md, and docs/MAC_ACCEPTANCE.md. Check Google Chrome and Node.js >=22.12. Run npm ci, npm test, and npm run build. Start the local app with npm run dev and open http://localhost:5173 in desktop Chrome. Keep the terminal and main tab open. The Mac launcher is Start Teleprompter.command.
-
-Help me load my script without rewriting it, set the speech language, and test the microphone. Make the reader comfortable for my screen/camera position, using Focus view or Float reader. I will grant microphone permission and speak for the test.
-
-When I give feedback, fix this same running checkout in place. Preserve my script and browser data. Tune src/config.ts for reading/tracking defaults, src/theme.css for colors/typography, and src/index.css for layout. Use in-app settings for session-only adjustments. Do not make a new app or deploy another copy.
-
-For tracking bugs, compare the actual recognized text with the intended script position, add an authorized or synthetic regression fixture, then fix and test it. Run relevant checks after changes. Walk me through the Mac acceptance checklist, including a short recording in my separate recorder. Be explicit about what is simulated versus tested on my real Mac; do not call the matcher benchmark end-to-end latency.
-
-When I am happy, give me the local folder, launcher, changed settings, and a short handoff for the next person's agent. Keep scripts and recordings out of GitHub unless I explicitly authorize sharing them. Once tuning is finished, help me publish the source to GitHub using docs/PUBLISH.md and my locally authenticated GitHub account. Keep personal scripts, recordings, and credentials out of the repository. Do not force-push over an existing project.
+When I give feedback later, fix this same checkout in place (AGENTS.md explains where). Don't add a hosted site or a paid API.

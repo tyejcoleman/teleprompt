@@ -9,7 +9,8 @@ The owner will tune this app on their own Mac first, then share the repository a
 3. Clone this repository into a stable directory. Reuse the existing checkout on later visits.
 4. Run `npm ci`, `npm test`, and `npm run build`.
 5. Start `npm run dev` and open http://localhost:5173 in desktop Chrome. Or use `bash "Start Teleprompter.command"`.
-6. Load the user's approved script. Do not invent or rewrite it without being asked. Paste through Edit script/Save script or use a UTF-8 `.txt` file.
+6. Load the user's approved script. Do not invent or rewrite it without being asked. Paste through Edit script/Save script or use a UTF-8 `.txt` file (Menu → Import .txt).
+   Offer to add delivery cues (pauses, "Next:" headings, slow-downs) following `docs/CUES.md`: write `<name>.cued.txt`, run `npm run cues -- <name>.txt <name>.cued.txt`, show the user the added cues, then import the cued file.
 7. Set the speech language; adjust reading size and margins.
 8. The user grants Chrome microphone access and reads the sample aloud. Only the user's real microphone can establish tracking quality and response time.
 9. Run `docs/MAC_ACCEPTANCE.md`, including a short test in the separate recording app.

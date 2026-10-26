@@ -11,7 +11,7 @@ export interface ContentSliceState {
   interimTranscriptIndex: number
 }
 
-const sampleText = `[Look at the camera.]
+export const sampleText = `[Look at the camera.]
 Welcome. This is a short test of your voice-following teleprompter.
 
 As you speak, the words change color and the script follows your place.
@@ -19,7 +19,7 @@ As you speak, the words change color and the script follows your place.
 [Pause. Next: explain the benefit.]
 Keep your next point in view, so you can focus on speaking clearly.
 
-Choose Edit script or Import .txt to load your own script.`
+Choose Edit script or Menu → Import .txt to load your own script.`
 let initialText = sampleText
 try { initialText = localStorage.getItem("teleprompter-script-v1") || sampleText } catch { /* Storage can be disabled. */ }
 
